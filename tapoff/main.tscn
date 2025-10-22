@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs3wkospr02"]
+
+[ext_resource type="Script" uid="uid://d4l4srmikv2s6" path="res://tapoff/tapme.gd" id="1_dcr3p"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mkm0w"]
+
+[node name="Main" type="Node2D"]
+
+[node name="tap" type="Node2D" parent="."]
+position = Vector2(132, 146)
+script = ExtResource("1_dcr3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="tap"]
+position = Vector2(70.16, 76.25)
+scale = Vector2(176.4, 153.5)
+texture = SubResource("PlaceholderTexture2D_mkm0w")
+offset = Vector2(0.1, 0)
+
+[node name="Node2D" type="Node2D" parent="tap"]
+position = Vector2(14, 45)
+
+[node name="Button" type="Button" parent="tap/Node2D"]
+offset_left = 1.0
+offset_right = 42.0
+offset_bottom = 41.0
