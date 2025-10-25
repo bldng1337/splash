@@ -41,3 +41,6 @@ texture = ExtResource("4_6vmr2")
 script = ExtResource("5_0v4l1")
 collection = NodePath("../Spawner")
 trash = NodePath("../Mülltonne")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 324)
