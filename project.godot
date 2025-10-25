@@ -15,6 +15,10 @@ run/main_scene="uid://cbialo1q0ae7i"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+manager="*res://general/GameManager.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"

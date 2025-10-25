@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://pt7josrfbr08"]
+
+[ext_resource type="Texture2D" uid="uid://cgagut51800bm" path="res://assets/W2LVL1/GWP_W2L1.png" id="1_ov0kl"]
+[ext_resource type="PackedScene" uid="uid://b75uhm55s35l2" path="res://content/W2/river/trash.tscn" id="2_eikky"]
+[ext_resource type="Script" uid="uid://b1ic8esi10u77" path="res://content/W2/river/spawner.gd" id="3_eikky"]
+[ext_resource type="Texture2D" uid="uid://bcecjsvdhu5eb" path="res://assets/W2LVL1/mülltonne.png" id="4_6vmr2"]
+[ext_resource type="Script" uid="uid://bdqhaxdwqeonn" path="res://content/W2/river/picker.gd" id="5_0v4l1"]
+
+[sub_resource type="Curve2D" id="Curve2D_k0oon"]
+bake_interval = 512.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1223, -140, 0, 0, 0, 0, 952, 80, 0, 0, 0, 0, 561, 301, 0, 0, 0, 0, 195, 342, 0, 0, 0, 0, -69, 279)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+position = Vector2(1221, -63)
+script = ExtResource("3_eikky")
+entity = ExtResource("2_eikky")
+spawn_range = 80.0
+amount = 5
+path = NodePath("../Path2D")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 77)
+curve = SubResource("Curve2D_k0oon")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(579, 325)
+scale = Vector2(0.5990741, 0.5990741)
+texture = ExtResource("1_ov0kl")
+
+[node name="Mülltonne" type="Sprite2D" parent="."]
+position = Vector2(1044, 535.00006)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("4_6vmr2")
+
+[node name="DragManager" type="Node2D" parent="." node_paths=PackedStringArray("collection", "trash")]
+script = ExtResource("5_0v4l1")
+collection = NodePath("../Spawner")
+trash = NodePath("../Mülltonne")

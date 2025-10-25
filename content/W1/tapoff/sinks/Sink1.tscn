@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvll3dokxnegg"]
+
+[ext_resource type="Script" uid="uid://d4l4srmikv2s6" path="res://content/W1/tapoff/tapme.gd" id="1_7xuc6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0hojn"]
+size = Vector2(40, 40)
+
+[node name="Sink1" type="Node2D" node_paths=PackedStringArray("button")]
+script = ExtResource("1_7xuc6")
+button = NodePath("Button")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_0hojn")
+offset = Vector2(0.1, 0)
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.39
+offset_bottom = 39.945
+metadata/_edit_use_anchors_ = true

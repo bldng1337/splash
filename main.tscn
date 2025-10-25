@@ -1,11 +1,3 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbialo1q0ae7i"]
-
-[ext_resource type="Script" uid="uid://b0qcj6jpir0xu" path="res://general/GameManager.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bs3wkospr02" path="res://tapoff/main.tscn" id="2_0xm2m"]
+[gd_scene format=3 uid="uid://cbialo1q0ae7i"]
 
 [node name="Main" type="Node2D"]
-
-[node name="manager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_ig7tw")
-games = Array[PackedScene]([ExtResource("2_0xm2m")])

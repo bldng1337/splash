@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs3wkospr02"]
+
+[ext_resource type="PackedScene" uid="uid://dvll3dokxnegg" path="res://content/W1/tapoff/sinks/Sink1.tscn" id="1_apx26"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Sink1" parent="." instance=ExtResource("1_apx26")]
+position = Vector2(151, 127)
+
+[node name="Sink3" parent="." instance=ExtResource("1_apx26")]
+position = Vector2(173, 398)
+
+[node name="Sink4" parent="." instance=ExtResource("1_apx26")]
+position = Vector2(636, 486)
+
+[node name="Sink5" parent="." instance=ExtResource("1_apx26")]
+position = Vector2(552, 190)
+
+[node name="Sink6" parent="." instance=ExtResource("1_apx26")]
+position = Vector2(938, 134)
