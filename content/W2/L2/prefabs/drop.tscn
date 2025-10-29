@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvp8eelgc26ia"]
+
+[ext_resource type="Script" uid="uid://cdgk7en828woq" path="res://content/W2/L2/scripts/drop.gd" id="1_sd2f8"]
+
+[node name="Drop" type="Node2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_sd2f8")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

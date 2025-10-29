@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshnqixolawsm"]
+
+[ext_resource type="Script" uid="uid://dqhavjj6eyx77" path="res://content/W2/L2/scripts/bucket.gd" id="1_epmnd"]
+[ext_resource type="Texture2D" uid="uid://b54rmdi0e8wem" path="res://assets/W2L2/eimer .png" id="2_qyhpy"]
+
+[node name="Bucket" type="Node2D"]
+script = ExtResource("1_epmnd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_qyhpy")

@@ -10,7 +10,6 @@ var picked_up: bool = false
 
 
 func _ready() -> void:
-	manager.register_objective()
 	if sprite:
 		var idx: int = 1+randi() % 3
 		sprite.texture = load("res://assets/W2LVL1/müll%d.png" % idx)
@@ -29,6 +28,8 @@ func _process(delta: float) -> void:
 		return
 	_offset+=delta*speed
 	if _offset>_len:
-		_offset=0
+		manager.fail()
+		queue_free()
+		return
 	global_position=getpos()
 	pass
