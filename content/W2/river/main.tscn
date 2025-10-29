@@ -20,7 +20,6 @@ position = Vector2(1221, -63)
 script = ExtResource("3_eikky")
 entity = ExtResource("2_eikky")
 spawn_range = 80.0
-amount = 5
 path = NodePath("../Path2D")
 
 [node name="Path2D" type="Path2D" parent="."]
