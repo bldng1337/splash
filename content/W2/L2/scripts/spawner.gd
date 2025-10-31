@@ -24,6 +24,8 @@ var spawn_timer:float = 0.0
 var numspawned:int =0
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	print("Spawning %s" % spawn_amount)
 	for i in range(spawn_amount):
 		manager.register_objective()

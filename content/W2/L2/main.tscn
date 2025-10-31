@@ -22,7 +22,7 @@ scale = Vector2(0.59999996, 0.59999996)
 texture = ExtResource("1_6f4mk")
 
 [node name="Bucket" parent="." node_paths=PackedStringArray("collection") instance=ExtResource("2_5ak0m")]
-position = Vector2(562, 567)
+position = Vector2(405, 567)
 shape = SubResource("RectangleShape2D_5ak0m")
 collection = NodePath("../collection")
 

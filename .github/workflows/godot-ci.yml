@@ -44,6 +44,15 @@ jobs:
         with:
           name: windows
           path: build/windows
+      - name: Create or update release
+        uses: softprops/action-gh-release@v1
+        with:
+          # tag_name: ${{ env.EXPORT_NAME }}
+          name: ${{ env.EXPORT_NAME }} Release
+          files: build/windows/*
+          # generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # export-linux:
   #   name: Linux Export
