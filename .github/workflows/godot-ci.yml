@@ -47,7 +47,7 @@ jobs:
       - name: Create or update release
         uses: softprops/action-gh-release@v1
         with:
-          # tag_name: ${{ env.EXPORT_NAME }}
+          tag_name: ${{ env.EXPORT_NAME }}
           name: ${{ env.EXPORT_NAME }} Release
           files: build/windows/*
           # generate_release_notes: true
