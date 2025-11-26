@@ -4,6 +4,7 @@ extends Node
 @export var games: Array[PackedScene]=[
 	preload("res://content/W2/L2/main.tscn"),
 	preload("res://content/W2/river/main.tscn"),
+	preload("res://content/W1/L1/main.tscn"),
 ]
 
 var current_game: Node
