@@ -65,9 +65,9 @@ func generate_path() -> void:
 		if current in path_cells:
 			path_directions.pop_back()
 			current = path_cells[-1]
-			move = Vector2i(1, 0)
-			path_directions.append(move)
-			current = current + move
+			# move = Vector2i(1, 0)
+			# path_directions.append(move)
+			# current = current + move
 
 		path_cells.append(current)
 
@@ -110,10 +110,10 @@ func spawn_pipes() -> void:
 		var correct_rotation = find_correct_rotation(pipe_type, needed_dirs)
 
 		var initial_rotation = randi() % 4
-		if randf() < 0.7:
-			while initial_rotation == correct_rotation:
-				initial_rotation = randi() % 4
-
+		if randf() < 0.2:
+			initial_rotation = correct_rotation
+		if i==0 or i==path_cells.size()-1:
+			initial_rotation = correct_rotation
 		pipe_rotations.append(initial_rotation)
 
 		var pipe_sprite = Sprite2D.new()

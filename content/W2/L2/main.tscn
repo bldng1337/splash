@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://m8e22ufjw8fg"]
+[gd_scene load_steps=11 format=3 uid="uid://m8e22ufjw8fg"]
 
 [ext_resource type="Texture2D" uid="uid://panpnyqqb178" path="res://assets/W2L2/GWP_W2L2.png" id="1_6f4mk"]
 [ext_resource type="PackedScene" uid="uid://dshnqixolawsm" path="res://content/W2/L2/prefabs/bucket.tscn" id="2_5ak0m"]
 [ext_resource type="Script" uid="uid://g7omxcelc0pg" path="res://content/W2/L2/scripts/spawner.gd" id="3_qhgh2"]
 [ext_resource type="PackedScene" uid="uid://cvp8eelgc26ia" path="res://content/W2/L2/prefabs/drop.tscn" id="4_8tkju"]
 [ext_resource type="Script" uid="uid://c3jt1q5g8oh6p" path="res://content/W2/L2/scripts/kill.gd" id="5_do7f5"]
+[ext_resource type="VideoStream" uid="uid://qd17vfaml5v3" path="res://assets/W2L2/output.ogv" id="6_5vyv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ak0m"]
 size = Vector2(130, 130)
@@ -14,6 +15,9 @@ size = Vector2(1000, 60)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vyv2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_do7f5"]
+font_size = 66
+
 [node name="Main" type="Node2D"]
 
 [node name="GwpW2l2" type="Sprite2D" parent="."]
@@ -21,8 +25,20 @@ position = Vector2(576, 324)
 scale = Vector2(0.59999996, 0.59999996)
 texture = ExtResource("1_6f4mk")
 
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 1155.0
+offset_bottom = 641.0
+ratio = 1.77
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+layout_mode = 2
+stream = ExtResource("6_5vyv2")
+autoplay = true
+expand = true
+loop = true
+
 [node name="Bucket" parent="." node_paths=PackedStringArray("collection") instance=ExtResource("2_5ak0m")]
-position = Vector2(405, 567)
+position = Vector2(840, 567)
 shape = SubResource("RectangleShape2D_5ak0m")
 collection = NodePath("../collection")
 
@@ -39,3 +55,12 @@ position = Vector2(564, 737)
 script = ExtResource("5_do7f5")
 shape = SubResource("WorldBoundaryShape2D_5vyv2")
 collection = NodePath("../collection")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 93.0
+text = "Catch the rain"
+label_settings = SubResource("LabelSettings_do7f5")
+horizontal_alignment = 1

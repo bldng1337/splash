@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://pt7josrfbr08"]
+[gd_scene load_steps=9 format=3 uid="uid://pt7josrfbr08"]
 
 [ext_resource type="Texture2D" uid="uid://cgagut51800bm" path="res://assets/W2LVL1/GWP_W2L1.png" id="1_ov0kl"]
 [ext_resource type="PackedScene" uid="uid://b75uhm55s35l2" path="res://content/W2/river/trash.tscn" id="2_eikky"]
 [ext_resource type="Script" uid="uid://b1ic8esi10u77" path="res://content/W2/river/spawner.gd" id="3_eikky"]
 [ext_resource type="Texture2D" uid="uid://bcecjsvdhu5eb" path="res://assets/W2LVL1/mülltonne.png" id="4_6vmr2"]
+[ext_resource type="VideoStream" uid="uid://cdn6x016xddbx" path="res://assets/W2LVL1/output.ogv" id="4_m1ywy"]
 [ext_resource type="Script" uid="uid://bdqhaxdwqeonn" path="res://content/W2/river/picker.gd" id="5_0v4l1"]
 
 [sub_resource type="Curve2D" id="Curve2D_k0oon"]
@@ -12,6 +13,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1223, -140, 0, 0, 0, 0, 952, 80, 0, 0, 0, 0, 561, 301, 0, 0, 0, 0, 195, 342, 0, 0, 0, 0, -69, 279)
 }
 point_count = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_0v4l1"]
+font_size = 66
 
 [node name="Main" type="Node2D"]
 
@@ -31,6 +35,18 @@ position = Vector2(579, 325)
 scale = Vector2(0.5990741, 0.5990741)
 texture = ExtResource("1_ov0kl")
 
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 1155.0
+offset_bottom = 641.0
+ratio = 1.77
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+layout_mode = 2
+stream = ExtResource("4_m1ywy")
+autoplay = true
+expand = true
+loop = true
+
 [node name="Mülltonne" type="Sprite2D" parent="."]
 position = Vector2(1044, 535.00006)
 scale = Vector2(0.465, 0.465)
@@ -43,3 +59,12 @@ trash = NodePath("../Mülltonne")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 324)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 93.0
+text = "Pick the Trash"
+label_settings = SubResource("LabelSettings_0v4l1")
+horizontal_alignment = 1

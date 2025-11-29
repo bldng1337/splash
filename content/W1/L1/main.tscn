@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://barlqjvmtnq36"]
+[gd_scene load_steps=3 format=3 uid="uid://barlqjvmtnq36"]
 
-[ext_resource type="Script" path="res://content/W1/L1/scripts/gamecontroller.gd" id="1_gamecontroller"]
+[ext_resource type="Script" uid="uid://db41wcs2dlcr8" path="res://content/W1/L1/scripts/gamecontroller.gd" id="1_gamecontroller"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6j340"]
+font_size = 66
 
 [node name="Main" type="Node2D"]
 
 [node name="GameController" type="Node2D" parent="."]
 script = ExtResource("1_gamecontroller")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 93.0
+text = "Fix the Pipes"
+label_settings = SubResource("LabelSettings_6j340")
+horizontal_alignment = 1
