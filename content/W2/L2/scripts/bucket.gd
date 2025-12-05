@@ -18,13 +18,30 @@ extends Node2D
 
 @export var collection: Node2D
 
+var last_position: float
+var velocities: Array[float] = []
+
 func _ready() -> void:
 	global_position.x = get_global_mouse_position().x
+	last_position = global_position.x
+
+func process_movement():
+	global_position.x =get_global_mouse_position().x
+	var velocity = global_position.x - last_position
+	last_position = global_position.x
+	velocities.push_back(velocity)
+	if velocities.size() > 10:
+		velocities.pop_front()
+	var avg_velocity = 0.0
+	for v in velocities:
+		avg_velocity += v
+	avg_velocity /= velocities.size()
+	return avg_velocity
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	global_position.x =get_global_mouse_position().x
+	rotation_degrees = process_movement()
 	var node_shape=CircleShape2D.new()
 	node_shape.radius=10
 	for node:Node2D in collection.get_children():

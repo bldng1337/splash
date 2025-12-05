@@ -84,6 +84,7 @@ func opposite_direction(dir_index: int) -> int:
 	return (dir_index + 2) % 4
 
 func spawn_pipes() -> void:
+	var guaranteed_wrong=1+floor(randf()*(path_cells.size()-2))
 	for i in range(path_cells.size()):
 		var cell = path_cells[i]
 		var pos = Vector2(cell.x * cell_size + grid_offset.x, cell.y * cell_size + grid_offset.y)
@@ -110,10 +111,13 @@ func spawn_pipes() -> void:
 		var correct_rotation = find_correct_rotation(pipe_type, needed_dirs)
 
 		var initial_rotation = randi() % 4
-		if randf() < 0.2:
+		if randf() < 0.3:
 			initial_rotation = correct_rotation
 		if i==0 or i==path_cells.size()-1:
 			initial_rotation = correct_rotation
+		if i==guaranteed_wrong:
+			while initial_rotation==correct_rotation:
+				initial_rotation = randi() % 4
 		pipe_rotations.append(initial_rotation)
 
 		var pipe_sprite = Sprite2D.new()
@@ -179,8 +183,21 @@ func _input(event: InputEvent) -> void:
 
 func rotate_pipe(index: int) -> void:
 	pipe_rotations[index] = (pipe_rotations[index] + 1) % 4
-	pipes[index].rotation_degrees = pipe_rotations[index] * 90
+	# pipes[index].rotation_degrees = pipe_rotations[index] * 90
 	check_win_condition()
+
+func _process(delta: float) -> void:
+	for i in range(pipes.size()):
+		var pipe = pipes[i]
+		var target_rotation = pipe_rotations[i]
+		if pipe.rotation_degrees != target_rotation * 90:
+			if target_rotation == 4 or target_rotation == 0:
+				var next_rotation = pipe.rotation_degrees + delta * 1000
+				if next_rotation >= 360:
+					next_rotation = 0
+				pipe.rotation_degrees = next_rotation
+				return
+			pipe.rotation_degrees = lerp(pipe.rotation_degrees, target_rotation * 90.0, delta * 20)
 
 func check_win_condition() -> void:
 	for i in range(pipes.size()):

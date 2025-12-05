@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pt7josrfbr08"]
+[gd_scene load_steps=10 format=3 uid="uid://pt7josrfbr08"]
 
 [ext_resource type="Texture2D" uid="uid://cgagut51800bm" path="res://assets/W2LVL1/GWP_W2L1.png" id="1_ov0kl"]
 [ext_resource type="PackedScene" uid="uid://b75uhm55s35l2" path="res://content/W2/river/trash.tscn" id="2_eikky"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcecjsvdhu5eb" path="res://assets/W2LVL1/mülltonne.png" id="4_6vmr2"]
 [ext_resource type="VideoStream" uid="uid://cdn6x016xddbx" path="res://assets/W2LVL1/output.ogv" id="4_m1ywy"]
 [ext_resource type="Script" uid="uid://bdqhaxdwqeonn" path="res://content/W2/river/picker.gd" id="5_0v4l1"]
+[ext_resource type="PackedScene" uid="uid://c48155l6qstq6" path="res://content/W2/river/trash_effect.tscn" id="7_s3yqy"]
 
 [sub_resource type="Curve2D" id="Curve2D_k0oon"]
 bake_interval = 512.0
@@ -56,6 +57,7 @@ texture = ExtResource("4_6vmr2")
 script = ExtResource("5_0v4l1")
 collection = NodePath("../Spawner")
 trash = NodePath("../Mülltonne")
+effect = ExtResource("7_s3yqy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 324)

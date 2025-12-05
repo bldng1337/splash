@@ -4,7 +4,7 @@ extends Node2D
 @export var sprite: Sprite2D
 
 var is_shit: bool = false
-var speed: float = 300
+var speed: float = 250
 
 func _ready() -> void:
 	is_shit=randi()%2==0
@@ -15,5 +15,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	speed+=delta*400
+	speed+=delta*600
 	global_position+=Vector2(0,speed*delta)

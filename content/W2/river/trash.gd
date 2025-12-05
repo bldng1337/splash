@@ -22,11 +22,16 @@ func getpos() -> Vector2:
 	var newpos=path.curve.sample_baked(_offset,true)+_relpos
 	return path.to_global(newpos)
 
+
+var time=0;
+
 func _process(delta: float) -> void:
 	if picked_up:
-		global_position=get_global_mouse_position()
+		global_position=lerp(global_position,get_global_mouse_position(),delta*20)
 		return
 	_offset+=delta*speed
+	time+=delta
+	rotation_degrees=sin(time)*2*15
 	if _offset>_len:
 		manager.fail()
 		queue_free()

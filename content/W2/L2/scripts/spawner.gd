@@ -42,6 +42,7 @@ func _process(delta:float) -> void:
 	var pos=shape.get_rect().position
 	var size=shape.get_rect().size
 	spawned.position = Vector2(randf_range(pos.x, pos.x+size.x), randf_range(pos.y, pos.y+size.y))
+	spawned.scale*=1.1
 	numspawned+=1
 
 
