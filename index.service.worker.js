@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1765873957|5791005';
+const CACHE_VERSION = '1765881975|5894496';
 /** @type {string} */
 const CACHE_PREFIX = 'Platschparty-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
