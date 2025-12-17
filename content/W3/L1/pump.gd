@@ -3,8 +3,8 @@ extends Node2D
 @export var pump_sprite: Sprite2D
 @export var level: Polygon2D
 
-var low=315.0
-var high=450.0
+var low=355.0
+var high=495.0
 
 var low_level=414.0
 var high_level=399.0

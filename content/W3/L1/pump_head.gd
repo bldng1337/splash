@@ -1,7 +1,7 @@
 extends Node2D
 
-var low=315.0
-var high=450.0
+var low=355.0
+var high=495.0
 
 var hold=false
 
