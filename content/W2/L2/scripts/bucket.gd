@@ -25,9 +25,10 @@ func _ready() -> void:
 	global_position.x = get_global_mouse_position().x
 	last_position = global_position.x
 
-func process_movement():
+func process_movement(delta:float):
 	global_position.x =get_global_mouse_position().x
 	var velocity = global_position.x - last_position
+	velocity=velocity*delta*230
 	last_position = global_position.x
 	velocities.push_back(velocity)
 	if velocities.size() > 10:
@@ -38,10 +39,10 @@ func process_movement():
 	avg_velocity /= velocities.size()
 	return avg_velocity
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	rotation_degrees = process_movement()
+	rotation_degrees = process_movement(delta)
 	var node_shape=CircleShape2D.new()
 	node_shape.radius=10
 	for node:Node2D in collection.get_children():
