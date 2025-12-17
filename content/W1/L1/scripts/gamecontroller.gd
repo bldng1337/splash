@@ -4,6 +4,7 @@ var pipe_straight = preload("res://assets/W1L1/pipe_straight.png")
 var pipe_corner = preload("res://assets/W1L1/pipe_corner.png")
 var pipe_triple = preload("res://assets/W1L1/pipe_triple.png")
 var pipe_cross = preload("res://assets/W1L1/Pipe_cross.png")
+var pipe_end = preload("res://assets/W1L1/pipe_endstart.png")
 
 var grid_size: Vector2i = Vector2i(10, 5)
 var cell_size: float = 120.0
@@ -140,7 +141,7 @@ func spawn_pipes() -> void:
 
 func choose_pipe_type(needed_dirs: Array[Vector2i]) -> String:
 	if needed_dirs.size() <= 1:
-		return "straight"
+		return "pipe_end"
 
 	if needed_dirs.size() == 2:
 		var diff = needed_dirs[0] - needed_dirs[1]
@@ -161,6 +162,7 @@ func get_pipe_texture(pipe_type: String) -> Texture2D:
 		"corner": return pipe_corner
 		"triple": return pipe_triple
 		"cross": return pipe_cross
+		"pipe_end": return pipe_end
 	return pipe_straight
 
 func find_correct_rotations(pipe_type: String, needed_dirs: Array) -> Array[int]:
@@ -180,7 +182,8 @@ const PIPE_CONNECTIONS = {
 	"straight": [Vector2i(-1, 0), Vector2i(1, 0)],
 	"corner": [Vector2i(1, 0), Vector2i(0, -1)],
 	"triple": [Vector2i(-1, 0), Vector2i(0, -1), Vector2i(1, 0)],
-	"cross": [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1)]
+	"cross": [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1)],
+	"pipe_end": [Vector2i(1, 0)],
 }
 
 func rotate_pipe_connections(pipe_type: String, rotation: int) -> Array[Vector2i]:
@@ -254,4 +257,5 @@ func on_puzzle_complete() -> void:
 	if game_complete:
 		return
 	game_complete = true
+	await get_tree().create_timer(0.5).timeout
 	manager.finish_objective()

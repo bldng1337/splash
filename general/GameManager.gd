@@ -31,7 +31,9 @@ func finish_objective() -> void:
 func next_game() -> void:
 	print("Next game %s" % randi())
 	var last_game_index=current_game_index
-	while current_game_index==last_game_index:
+	var steps=0
+	while current_game_index==last_game_index and steps<10:
+		steps+=1
 		current_game_index = randi() % games.size()
 	if current_game!=null:
 		current_game.queue_free()

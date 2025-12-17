@@ -28,7 +28,7 @@ func _ready() -> void:
 func process_movement(delta:float):
 	global_position.x =get_global_mouse_position().x
 	var velocity = global_position.x - last_position
-	velocity=velocity*delta*260
+	velocity=velocity*delta*190
 	last_position = global_position.x
 	velocities.push_back(velocity)
 	if velocities.size() > 10:
