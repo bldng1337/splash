@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dofhe7nscuyta"]
+
+[ext_resource type="Texture2D" uid="uid://btftk07x85g51" path="res://assets/W3L1/Boiler.png" id="1_upop5"]
+[ext_resource type="Texture2D" uid="uid://bibkcn8gdexq" path="res://assets/W3L1/pumpTop.png" id="2_w23e7"]
+[ext_resource type="Texture2D" uid="uid://ciu5xhfbuo2om" path="res://assets/W3L1/pump_bottom.png" id="3_1b7xb"]
+[ext_resource type="Script" uid="uid://j08mep43l6j0" path="res://content/W3/L1/pump_head.gd" id="3_w23e7"]
+[ext_resource type="Script" uid="uid://bjemd1ljy5ngh" path="res://content/W3/L1/pump.gd" id="4_crvym"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(600, 399.1793)
+rotation = 3.1415927
+scale = Vector2(1, 2.5608637)
+color = Color(0.33333334, 0.7176471, 1, 1)
+polygon = PackedVector2Array(-4, -5.9999847, 99, -6, 99, 75.000015, -4, 75)
+
+[node name="Boiler" type="Sprite2D" parent="."]
+position = Vector2(548, 342)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_upop5")
+
+[node name="PumpTop" type="Sprite2D" parent="."]
+position = Vector2(210.00002, 433.00003)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_w23e7")
+script = ExtResource("3_w23e7")
+
+[node name="PumpBottom" type="Sprite2D" parent="." node_paths=PackedStringArray("pump_sprite", "level")]
+position = Vector2(211, 497)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_1b7xb")
+script = ExtResource("4_crvym")
+pump_sprite = NodePath("../PumpTop")
+level = NodePath("../Polygon2D")
