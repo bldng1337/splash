@@ -28,7 +28,7 @@ func _ready() -> void:
 func process_movement(delta:float):
 	global_position.x =get_global_mouse_position().x
 	var velocity = global_position.x - last_position
-	velocity=velocity*delta*230
+	velocity=velocity*delta*260
 	last_position = global_position.x
 	velocities.push_back(velocity)
 	if velocities.size() > 10:
@@ -53,7 +53,6 @@ func _process(delta: float) -> void:
 				return
 			manager.finish_objective()
 			node.queue_free()
-
 
 func _draw() -> void:
 	if Engine.is_editor_hint() and shape != null:
