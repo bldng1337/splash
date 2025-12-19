@@ -89,7 +89,7 @@ func _input(event: InputEvent) -> void:
 		if is_ready:
 			var mouse_pos = get_global_mouse_position()
 			for glass in glasses:
-				if glass.node.global_position.distance_to(mouse_pos) < 50:
+				if glass.node.global_position.distance_to(mouse_pos) < 50 and glass.node.position.distance_to(glass.want_pos) < 15:
 					glass.reveal()
 					if glass.is_clean:
 						manager.finish_objective()
