@@ -42,7 +42,7 @@ func get_game_time() -> float:
 
 func get_game_duration() -> float:
 	var diff=get_difficulty()
-	return base_time*(1-diff*0.6)+2
+	return base_time*(1-diff*0.6)+4
 
 func get_remaining_time() -> float:
 	var total_time=get_game_duration()
@@ -72,8 +72,8 @@ func finish_objective() -> void:
 		next_game()
 
 func next_game() -> void:
-	game_start_time=Time.get_ticks_msec()/1000.0
-	await get_tree().create_timer(0.5).timeout
+	# game_start_time=Time.get_ticks_msec()/1000.0
+	# await get_tree().create_timer(0.5).timeout
 	score+=1
 	if lives <= 0:
 		var game_over = game_over_screen.instantiate()
