@@ -72,6 +72,8 @@ func finish_objective() -> void:
 		next_game()
 
 func next_game() -> void:
+	game_start_time=Time.get_ticks_msec()/1000.0
+	await get_tree().create_timer(1).timeout
 	score+=1
 	if lives <= 0:
 		var game_over = game_over_screen.instantiate()

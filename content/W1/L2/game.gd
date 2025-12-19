@@ -93,10 +93,8 @@ func _input(event: InputEvent) -> void:
 				if glass.node.global_position.distance_to(mouse_pos) < 50:
 					glass.reveal()
 					if glass.is_clean:
-						await get_tree().create_timer(0.5).timeout
 						manager.finish_objective()
 					else:
-						await get_tree().create_timer(1).timeout
 						manager.fail()
 
 func _process(delta: float) -> void:
