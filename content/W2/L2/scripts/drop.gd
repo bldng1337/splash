@@ -13,7 +13,6 @@ func _ready() -> void:
 	else:
 		sprite.texture = load("res://assets/W2L2/Raindrop%d.png" % (1+randi() % 5))
 
-
 func _process(delta: float) -> void:
 	speed+=(delta*600)*(manager.get_difficulty()+0.5)
 	global_position+=Vector2(0,speed*delta)

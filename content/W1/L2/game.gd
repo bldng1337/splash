@@ -62,13 +62,12 @@ func _ready() -> void:
 	spawn_glasses()
 
 func spawn_glasses() -> void:
+	manager.register_objective()
 	var center = get_viewport().get_visible_rect().size/2
 	center.y += 50
 	for i in range(num_glasses):
 		var glass = Glass.new()
 		glass.init()
-		if glass.is_clean:
-			manager.register_objective()
 		var spacing = 100
 		var total_width = (num_glasses - 1) * spacing
 		var x = center.x - total_width / 2.0 + i * spacing
@@ -109,8 +108,10 @@ func swap():
 	var interval=swap_time/(swaps+1)
 	for glass in glasses:
 		glass.hide()
+	await get_tree().create_timer(0.8).timeout
 	for i in range(swaps):
-		await get_tree().create_timer(interval).timeout
+		if i>=1:
+			await get_tree().create_timer(interval).timeout
 		var a=int(randi()%num_glasses)
 		var b=int(randi()%num_glasses)
 		for _i in range(100):
