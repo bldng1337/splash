@@ -38,6 +38,7 @@ class Glass:
 			node.texture = dirty_textures[randi() % dirty_textures.size()]
 		hider = Sprite2D.new()
 		hider.texture = hider_texture
+		hider.modulate = Color(0, 0, 0)
 		hider.position = Vector2(0, -glass_height)
 		hider.scale = Vector2(2, 6)
 		node.add_child(hider)

@@ -9,7 +9,7 @@ extends Node
 	preload("res://content/W1/L2/main.tscn"),
 ]
 
-var game_over_screen: PackedScene = preload("res://general/screens/game_over.tscn")
+var game_over_screen: PackedScene = preload("res://general/screens/game_over/game_over.tscn")
 
 var global_time=0
 var score=0
