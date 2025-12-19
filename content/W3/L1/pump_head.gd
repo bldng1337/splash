@@ -8,7 +8,7 @@ var hold=false
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			if global_position.distance_to(event.global_position)<60:
+			if global_position.distance_to(event.global_position)<90:
 				hold=true
 		else:
 			hold=false

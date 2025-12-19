@@ -8,11 +8,11 @@ extends Node2D
 
 var _timer: float = 0.0
 var _spawned: int = 0
-
+var _spawn_amount: int = 0
 func _ready():
 	# amount=floor(amount+randf_range(0,1))
-	print("Spawning %s" % amount)
-	for i in range(amount):
+	_spawn_amount=int(amount*(manager.get_difficulty()+0.5))
+	for i in range(_spawn_amount):
 		manager.register_objective()
 
 func _process(delta):
@@ -20,7 +20,7 @@ func _process(delta):
 	if _timer > delay:
 		_timer = 0.0
 		_spawned += 1
-		if _spawned <= amount:
+		if _spawned <= _spawn_amount:
 			var e: Node2D = entity.instantiate()
 			e.position = Vector2(randf_range(-spawn_range, spawn_range), randf_range(-spawn_range, spawn_range))
 			e.path=path

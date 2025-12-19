@@ -15,5 +15,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	speed+=delta*600
+	speed+=(delta*600)*(manager.get_difficulty()+0.5)
 	global_position+=Vector2(0,speed*delta)

@@ -18,20 +18,21 @@ extends Node2D
 
 @export var spawn:PackedScene
 @export var spawn_amount:int = 1
-@export var delay:float = 0.0
-
+var delay=0.0
 var spawn_timer:float = 0.0
 var numspawned:int =0
+var _spawn_amount:float=0.0
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	print("Spawning %s" % spawn_amount)
-	for i in range(spawn_amount):
+	_spawn_amount=spawn_amount*(manager.get_difficulty()+0.5)
+	delay=(manager.get_game_duration()-2)/_spawn_amount
+	for i in range(_spawn_amount):
 		manager.register_objective()
 
 func _process(delta:float) -> void:
-	if numspawned>=spawn_amount:
+	if numspawned>=_spawn_amount:
 		return
 	spawn_timer += delta
 	if spawn_timer < delay:

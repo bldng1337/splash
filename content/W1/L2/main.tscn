@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://beu7isw2h55un"]
+
+[ext_resource type="Script" uid="uid://vp7rpyqljlxr" path="res://content/W1/L2/game.gd" id="1_2pymu"]
+[ext_resource type="FontFile" uid="uid://cegmqqby57le4" path="res://assets/FreckleFace-Regular.ttf" id="1_uhy1x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2pymu"]
+font = ExtResource("1_uhy1x")
+font_size = 66
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("click_label")]
+script = ExtResource("1_2pymu")
+click_label = NodePath("Label2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 84.0
+text = "Find the clean Water"
+label_settings = SubResource("LabelSettings_2pymu")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 519.0
+offset_right = 1150.0
+offset_bottom = 601.0
+text = "Click to start"
+label_settings = SubResource("LabelSettings_2pymu")
+horizontal_alignment = 1

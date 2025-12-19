@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://barlqjvmtnq36"]
+[gd_scene load_steps=5 format=3 uid="uid://barlqjvmtnq36"]
 
 [ext_resource type="Script" uid="uid://db41wcs2dlcr8" path="res://content/W1/L1/scripts/gamecontroller.gd" id="1_gamecontroller"]
 [ext_resource type="Texture2D" uid="uid://b7h8528pced0" path="res://assets/W1L1/pipe_background.png" id="3_4o8gt"]
+[ext_resource type="FontFile" uid="uid://cegmqqby57le4" path="res://assets/FreckleFace-Regular.ttf" id="3_tkkod"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6j340"]
+font = ExtResource("3_tkkod")
 font_size = 66
 
 [node name="Main" type="Node2D"]
@@ -22,7 +24,7 @@ script = ExtResource("1_gamecontroller")
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 1150.0
-offset_bottom = 93.0
+offset_bottom = 84.0
 text = "Fix the Pipes"
 label_settings = SubResource("LabelSettings_6j340")
 horizontal_alignment = 1

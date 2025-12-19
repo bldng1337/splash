@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://pt7josrfbr08"]
+[gd_scene load_steps=11 format=3 uid="uid://pt7josrfbr08"]
 
 [ext_resource type="Texture2D" uid="uid://cgagut51800bm" path="res://assets/W2LVL1/GWP_W2L1.png" id="1_ov0kl"]
 [ext_resource type="PackedScene" uid="uid://b75uhm55s35l2" path="res://content/W2/river/trash.tscn" id="2_eikky"]
@@ -7,6 +7,7 @@
 [ext_resource type="VideoStream" uid="uid://cdn6x016xddbx" path="res://assets/W2LVL1/output.ogv" id="4_m1ywy"]
 [ext_resource type="Script" uid="uid://bdqhaxdwqeonn" path="res://content/W2/river/picker.gd" id="5_0v4l1"]
 [ext_resource type="PackedScene" uid="uid://c48155l6qstq6" path="res://content/W2/river/trash_effect.tscn" id="7_s3yqy"]
+[ext_resource type="FontFile" uid="uid://cegmqqby57le4" path="res://assets/FreckleFace-Regular.ttf" id="8_h8j73"]
 
 [sub_resource type="Curve2D" id="Curve2D_k0oon"]
 bake_interval = 512.0
@@ -16,6 +17,7 @@ _data = {
 point_count = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_0v4l1"]
+font = ExtResource("8_h8j73")
 font_size = 66
 
 [node name="Main" type="Node2D"]

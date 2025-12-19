@@ -43,17 +43,17 @@ func generate_path() -> void:
 		for j in range(grid_size.y):
 			cells[i].append(false)
 
-	var pos_stack: Array[Vector2i] = [Vector2i(0, grid_size.y / 2)]#randi() %
+	var pos_stack: Array[Vector2i] = [Vector2i(grid_size.x/2, grid_size.y / 2)]#randi() %
 	var dir_stack: Array[Vector2i] = [Vector2i(1, 0)]
 
-	var steps=0
-	while pos_stack.size() > 0:
-		steps+=1
-		if steps>20:
+
+	for steps in range(manager.get_difficulty()*15+5):
+		if pos_stack.size() < 0:
 			break
 		var cell = pos_stack.pop_back()
 		var dir = dir_stack.pop_back()
-
+		if cell == null:
+			break
 		# Check bounds
 		if cell.x < 0 or cell.x >= grid_size.x or cell.y < 0 or cell.y >= grid_size.y:
 			continue
@@ -90,7 +90,9 @@ func generate_path() -> void:
 		# Chance to branch
 		if randf() < branch_chance:
 			var second = random_dir()
-			while second == first:
+			for _i in range(100):
+				if second != first:
+					break
 				second = random_dir()
 			pos_stack.append(cell + second)
 			dir_stack.append(second)
@@ -116,7 +118,9 @@ func spawn_pipes() -> void:
 
 		# Randomize rotation with a chance
 		if randf() < correct_rotation_chance:
-			while rotation in correct_rotation:
+			for _i in range(100):
+				if rotation not in correct_rotation:
+					break
 				rotation = randi() % 4
 
 		var pipe_sprite = Sprite2D.new()
@@ -132,11 +136,17 @@ func spawn_pipes() -> void:
 		pipe_sprites.append(pipe_sprite)
 
 	var wrong_pipe_idx= randi()%pipes.size()
-	while pipe_types[wrong_pipe_idx]=="cross":
+	for _i in range(100):
+		if pipe_types[wrong_pipe_idx]!="cross":
+			break
 		wrong_pipe_idx= randi()%pipes.size()
+
 	# Ensure at least one pipe is incorrect
-	while pipe_rotations[wrong_pipe_idx] in correct_pipe_rotations[wrong_pipe_idx]:
+	for _i in range(100):
+		if pipe_rotations[wrong_pipe_idx] not in correct_pipe_rotations[wrong_pipe_idx]:
+			break
 		pipe_rotations[wrong_pipe_idx] = (pipe_rotations[wrong_pipe_idx] + 1) % 4
+		pipe_sprites[wrong_pipe_idx].rotation_degrees = pipe_rotations[wrong_pipe_idx] * 90
 
 
 func choose_pipe_type(needed_dirs: Array[Vector2i]) -> String:
@@ -150,7 +160,6 @@ func choose_pipe_type(needed_dirs: Array[Vector2i]) -> String:
 			return "straight"
 		else:
 			return "corner"
-
 	if needed_dirs.size() == 3:
 		return "triple"
 

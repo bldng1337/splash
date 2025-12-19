@@ -17,6 +17,7 @@ func _ready() -> void:
 	_offset = path.curve.get_closest_offset(local_pos)
 	_relpos = path.curve.get_closest_point(local_pos)-local_pos
 	_len=path.curve.get_baked_length()
+	speed=speed*(0.5+manager.get_difficulty())
 
 func getpos() -> Vector2:
 	var newpos=path.curve.sample_baked(_offset,true)+_relpos

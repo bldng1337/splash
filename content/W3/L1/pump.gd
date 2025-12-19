@@ -23,11 +23,11 @@ func _process(delta: float) -> void:
 	var pump_delta=pump_level-last_pump_pos
 	last_pump_pos=pump_level
 	pump_delta=max(pump_delta,0.0)
-	curr_level+=pump_delta*0.1
+	curr_level+=pump_delta*0.1*(manager.get_difficulty()*0.2+0.9)
 	if curr_level>1.0:
 		curr_level=1.0
 		manager.finish_objective()
-	curr_level-=delta*0.01+(curr_level*curr_level)*0.002
+	curr_level-=(delta*0.01+(curr_level*curr_level)*0.002)*(manager.get_difficulty()*0.4+0.8)
 	if(curr_level<0):
 		curr_level=0.0
 	level.scale.y=curr_level*2.5
