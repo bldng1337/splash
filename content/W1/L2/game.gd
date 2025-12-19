@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 
 func swap():
 	var duration=manager.get_game_duration()
-	var swap_time=min(duration*0.65,3)
+	var swap_time=min(manager.get_remaining_time()*0.5,3)
 	var swaps=int(manager.get_difficulty()*2+1)
 	var interval=swap_time/(swaps+1)
 	for glass in glasses:
