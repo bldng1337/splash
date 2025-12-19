@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cegmqqby57le4" path="res://assets/FreckleFace-Regular.ttf" id="7_hwnfg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ak0m"]
-size = Vector2(130, 130)
+size = Vector2(200, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgh2"]
 size = Vector2(1000, 60)
@@ -40,7 +40,7 @@ expand = true
 loop = true
 
 [node name="Bucket" parent="." node_paths=PackedStringArray("collection") instance=ExtResource("2_5ak0m")]
-position = Vector2(645, 567)
+position = Vector2(554, 567)
 shape = SubResource("RectangleShape2D_5ak0m")
 collection = NodePath("../collection")
 
