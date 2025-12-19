@@ -21,7 +21,7 @@ var objectives: int = 0
 var lives: int = 3
 var num_games=0
 
-var base_time: float = 15.0
+var base_time: float = 30.0
 var game_start_time: float = 0.0
 
 var running=true

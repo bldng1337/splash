@@ -51,8 +51,8 @@ class Glass:
 		hidden = false
 
 	func update(delta:float) -> void:
-		hider.position.y = lerp(hider.position.y, float(0 if hidden else -glass_height), delta*5)
-		node.position = lerp(node.position, want_pos, delta*3)
+		hider.position.y = lerp(hider.position.y, float(0 if hidden else -glass_height), delta*5+5*manager.get_difficulty())
+		node.position = lerp(node.position, want_pos, delta*2.5+manager.get_difficulty())
 
 var start=false
 var is_ready=false
