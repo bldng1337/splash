@@ -42,7 +42,7 @@ func process_movement(delta:float):
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	rotation_degrees = process_movement(delta)
+	rotation_degrees = clamp(process_movement(delta), -15, 15)
 	var node_shape=CircleShape2D.new()
 	node_shape.radius=10
 	for node:Node2D in collection.get_children():
