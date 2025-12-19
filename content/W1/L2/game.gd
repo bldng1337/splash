@@ -31,7 +31,7 @@ class Glass:
 	func init():
 		node = Sprite2D.new()
 		node.scale = Vector2(0.1, 0.1)
-		is_clean = randi() % 2 == 0
+		is_clean = false#randi() % 2 == 0
 		if is_clean:
 			node.texture = clean_textures[randi() % clean_textures.size()]
 		else:
@@ -51,8 +51,8 @@ class Glass:
 		hidden = false
 
 	func update(delta:float) -> void:
-		hider.position.y = lerp(hider.position.y, float(0 if hidden else -glass_height), delta*5+5*manager.get_difficulty())
-		node.position = lerp(node.position, want_pos, delta*2.5+manager.get_difficulty())
+		hider.position.y = lerp(hider.position.y, float(0 if hidden else -glass_height), delta*4)
+		node.position = lerp(node.position, want_pos, delta*2.5)
 
 var start=false
 var is_ready=false
@@ -104,7 +104,7 @@ func _process(delta: float) -> void:
 
 func swap():
 	var duration=manager.get_game_duration()
-	var swap_time=duration*0.65
+	var swap_time=min(duration*0.65,3)
 	var swaps=int(manager.get_difficulty()*2+1)
 	var interval=swap_time/(swaps+1)
 	for glass in glasses:

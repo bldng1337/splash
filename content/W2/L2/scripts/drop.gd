@@ -7,7 +7,7 @@ var is_shit: bool = false
 var speed: float = 250
 
 func _ready() -> void:
-	is_shit=randi()%2==0
+	# is_shit=randi()%2==0
 	if is_shit:
 		sprite.texture = load("res://assets/W2L2/kaka%d.png" % (1+randi() % 3))
 	else:

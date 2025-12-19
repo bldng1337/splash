@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed() and _picked_up==null:
 			for c in collection.get_children():
-				if c.global_position.distance_to(event.global_position)<50:
+				if c.global_position.distance_to(event.global_position)<130:
 					pickup(c)
 					break
 		else:
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 func is_hovered(node: Node2D) -> bool:
 	if not node:
 		return false
-	return node.global_position.distance_to(trash.global_position)<130
+	return node.global_position.distance_to(trash.global_position)<200
 
 func pickup(node: Node2D) -> void:
 	node.picked_up=true
