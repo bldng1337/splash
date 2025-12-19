@@ -76,6 +76,9 @@ func spawn_glasses() -> void:
 		glass.want_pos= glass.node.position
 		add_child(glass.node)
 		glasses.append(glass)
+	var random_idx=int(randi()%num_glasses)
+	glasses[random_idx].is_clean=true
+	glasses[random_idx].node.texture=clean_textures[randi()%clean_textures.size()]
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
