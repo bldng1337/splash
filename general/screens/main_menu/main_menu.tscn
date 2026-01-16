@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://di2ylqma11l1"]
+
+[ext_resource type="Texture2D" uid="uid://p0n688a6r2h7" path="res://assets/Start Screen with Background.png" id="1_a8tx3"]
+[ext_resource type="Script" uid="uid://dnbqin8qi1c3c" path="res://general/screens/main_menu/main.gd" id="1_hdwbg"]
+[ext_resource type="Texture2D" uid="uid://v0mywlyw3m31" path="res://assets/ui/Game Name.png" id="2_86uc1"]
+[ext_resource type="Texture2D" uid="uid://biyr4mq78ai5e" path="res://assets/ui/Select Difficulty.png" id="3_j4m1p"]
+[ext_resource type="Texture2D" uid="uid://d2bmi75y54w4f" path="res://assets/ui/easy.png" id="4_ei5im"]
+[ext_resource type="Texture2D" uid="uid://bv8fkxpinb41r" path="res://assets/ui/Start Button.png" id="4_j4m1p"]
+[ext_resource type="Texture2D" uid="uid://cfkf4t0arf1g" path="res://assets/ui/hard.png" id="5_hdwbg"]
+
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("easy_button", "hard_button", "start_button")]
+z_index = 4096
+scale = Vector2(0.61, 0.61)
+script = ExtResource("1_hdwbg")
+easy_button = NodePath("CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2/HBoxContainer/Button4")
+hard_button = NodePath("CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2/HBoxContainer/Button3")
+start_button = NodePath("CenterContainer/VBoxContainer/CenterContainer/Button3")
+
+[node name="StartScreenWithBackground" type="Sprite2D" parent="."]
+position = Vector2(962.2176, 540.3248)
+texture = ExtResource("1_a8tx3")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1914.7621
+offset_bottom = 1083.6821
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_86uc1")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_j4m1p")
+stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2/HBoxContainer"]
+z_index = 10
+layout_mode = 2
+icon = ExtResource("4_ei5im")
+flat = true
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer2/MarginContainer/CenterContainer2/HBoxContainer"]
+z_index = 10
+layout_mode = 2
+icon = ExtResource("5_hdwbg")
+flat = true
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
+z_index = 10
+layout_mode = 2
+icon = ExtResource("4_j4m1p")
+flat = true

@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://da46b7ueglsyh"]
+
+[ext_resource type="Texture2D" uid="uid://bcjys6lqchd35" path="res://assets/You Win Background Fullscreen.png" id="1_300hl"]
+[ext_resource type="Script" uid="uid://d3wkpdcfmgdga" path="res://general/screens/game_over/game_over.gd" id="1_e03ec"]
+[ext_resource type="Texture2D" uid="uid://ue4ujd28bqum" path="res://assets/ui/win/game over text.png" id="2_8caq7"]
+[ext_resource type="Texture2D" uid="uid://ci5ks6j4ftnh8" path="res://assets/ui/win/yap.png" id="3_8caq7"]
+[ext_resource type="Texture2D" uid="uid://3qypms8xgwe8" path="res://assets/ui/loose/Group 9.png" id="4_e03ec"]
+[ext_resource type="Texture2D" uid="uid://espap7850gd7" path="res://assets/ui/again.png" id="5_2sq7w"]
+[ext_resource type="FontFile" uid="uid://c3u6a3fnigfgr" path="res://assets/Poppins-Bold.ttf" id="5_86qg5"]
+[ext_resource type="Texture2D" uid="uid://bctgeb2m8axkg" path="res://assets/ui/back.png" id="6_h6d4a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hsmp5"]
+line_spacing = 0.0
+font = ExtResource("5_86qg5")
+font_size = 34
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+stacked_outline_count = 3
+stacked_outline_0/size = 1
+stacked_outline_1/size = 1
+stacked_outline_2/size = 1
+
+[node name="WinScreen" type="Node2D" node_paths=PackedStringArray("score_label", "time_label", "try_again_button", "main_menu_button")]
+scale = Vector2(0.61, 0.61)
+script = ExtResource("1_e03ec")
+score_label = NodePath("CenterContainer2/VBoxContainer/TextureRect/score_label")
+time_label = NodePath("CenterContainer2/VBoxContainer/TextureRect/time_label")
+try_again_button = NodePath("CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Button2")
+main_menu_button = NodePath("CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Button3")
+
+[node name="YouWinBackgroundFullscreen" type="Sprite2D" parent="."]
+position = Vector2(954.5691, 535.3954)
+texture = ExtResource("1_300hl")
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_left = 4.5042114
+offset_top = 0.30740356
+offset_right = 1887.4619
+offset_bottom = 1060.7303
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_8caq7")
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CenterContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_8caq7")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="CenterContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_e03ec")
+stretch_mode = 5
+
+[node name="time_label" type="Label" parent="CenterContainer2/VBoxContainer/TextureRect"]
+z_index = 10
+texture_filter = 4
+layout_mode = 0
+offset_left = 520.7488
+offset_top = 10.85379
+offset_right = 624.7488
+offset_bottom = 90.85379
+text = "134"
+label_settings = SubResource("LabelSettings_hsmp5")
+vertical_alignment = 1
+
+[node name="score_label" type="Label" parent="CenterContainer2/VBoxContainer/TextureRect"]
+z_index = 10
+texture_filter = 4
+layout_mode = 0
+offset_left = 255.04651
+offset_top = 11.159119
+offset_right = 363.0465
+offset_bottom = 91.15912
+text = "128"
+label_settings = SubResource("LabelSettings_hsmp5")
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="CenterContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+z_index = 10
+layout_mode = 2
+icon = ExtResource("6_h6d4a")
+flat = true
+
+[node name="Control3" type="Control" parent="CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+z_index = 10
+layout_mode = 2
+icon = ExtResource("5_2sq7w")
+flat = true

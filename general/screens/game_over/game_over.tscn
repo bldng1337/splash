@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnb5txvup5e64"]
+[gd_scene load_steps=10 format=3 uid="uid://bnb5txvup5e64"]
 
 [ext_resource type="Script" uid="uid://d3wkpdcfmgdga" path="res://general/screens/game_over/game_over.gd" id="1_58m6f"]
-[ext_resource type="Texture2D" uid="uid://b7h8528pced0" path="res://assets/W1L1/pipe_background.png" id="2_eqfs0"]
-[ext_resource type="Texture2D" uid="uid://taht17kxk0rr" path="res://assets/Game over screen background.png" id="3_j5sk3"]
+[ext_resource type="Texture2D" uid="uid://l1sk7cpewknh" path="res://assets/ui/loose/game over text.png" id="4_58m6f"]
 [ext_resource type="FontFile" uid="uid://c3u6a3fnigfgr" path="res://assets/Poppins-Bold.ttf" id="4_nbwr7"]
+[ext_resource type="Texture2D" uid="uid://3qypms8xgwe8" path="res://assets/ui/loose/Group 9.png" id="5_eqfs0"]
 [ext_resource type="Texture2D" uid="uid://bctgeb2m8axkg" path="res://assets/ui/back.png" id="5_hudwg"]
+[ext_resource type="Texture2D" uid="uid://ctuw4lp6dih6b" path="res://assets/ui/loose/yap_loose.png" id="5_j5sk3"]
+[ext_resource type="Texture2D" uid="uid://l7daq8cwruar" path="res://assets/Lose Background Fullscreen.png" id="6_58m6f"]
 [ext_resource type="Texture2D" uid="uid://espap7850gd7" path="res://assets/ui/again.png" id="6_klg7u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qk0x0"]
@@ -19,77 +21,96 @@ stacked_outline_0/size = 1
 stacked_outline_1/size = 1
 stacked_outline_2/size = 1
 
-[node name="GameOver" type="Node2D" node_paths=PackedStringArray("score_label", "time_label", "try_again_button")]
+[node name="GameOver" type="Node2D" node_paths=PackedStringArray("score_label", "time_label", "try_again_button", "main_menu_button")]
+scale = Vector2(0.61, 0.61)
 script = ExtResource("1_58m6f")
-score_label = NodePath("score_label")
-time_label = NodePath("time_label")
-try_again_button = NodePath("Button2")
+score_label = NodePath("CenterContainer/VBoxContainer/TextureRect/score_label")
+time_label = NodePath("CenterContainer/VBoxContainer/TextureRect/time_label")
+try_again_button = NodePath("CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Button2")
+main_menu_button = NodePath("CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Button3")
 
-[node name="PipeBackground" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(574.1173, 351.74054)
-scale = Vector2(1.1331803, 1.1331803)
-texture = ExtResource("2_eqfs0")
+[node name="LoseBackgroundFullscreen" type="Sprite2D" parent="."]
+position = Vector2(962.1822, 541.90485)
+texture = ExtResource("6_58m6f")
 
-[node name="GameOverScreenBackground" type="Sprite2D" parent="."]
-z_index = 10
-position = Vector2(548, 255)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_j5sk3")
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 4.5042114
+offset_top = 0.30740356
+offset_right = 1887.4619
+offset_bottom = 1060.7303
 
-[node name="score_label2" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_58m6f")
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_j5sk3")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_eqfs0")
+stretch_mode = 5
+
+[node name="time_label" type="Label" parent="CenterContainer/VBoxContainer/TextureRect"]
 z_index = 10
 texture_filter = 4
-offset_left = 404.44562
-offset_top = 188.07352
-offset_right = 979.7183
-offset_bottom = 344.43716
-scale = Vector2(0.5, 0.5)
-text = "128"
-label_settings = SubResource("LabelSettings_qk0x0")
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="time_label" type="Label" parent="."]
-z_index = 10
-texture_filter = 4
-offset_left = 624.25165
-offset_top = 270.9161
-offset_right = 728.25165
-offset_bottom = 350.9161
-scale = Vector2(0.5, 0.5)
+layout_mode = 0
+offset_left = 521.2292
+offset_top = 10.221775
+offset_right = 625.2292
+offset_bottom = 90.22177
 text = "134"
 label_settings = SubResource("LabelSettings_qk0x0")
 vertical_alignment = 1
 
-[node name="score_label" type="Label" parent="."]
+[node name="score_label" type="Label" parent="CenterContainer/VBoxContainer/TextureRect"]
 z_index = 10
 texture_filter = 4
-offset_left = 490.84256
-offset_top = 271.44296
-offset_right = 598.8425
-offset_bottom = 351.44296
-scale = Vector2(0.5, 0.5)
+layout_mode = 0
+offset_left = 255.25278
+offset_top = 9.762316
+offset_right = 363.25278
+offset_bottom = 89.762314
 text = "128"
 label_settings = SubResource("LabelSettings_qk0x0")
 vertical_alignment = 1
 
-[node name="back" type="Button" parent="."]
-visible = false
-offset_left = 393.98093
-offset_top = 318.9732
-offset_right = 577.98096
-offset_bottom = 385.9732
-scale = Vector2(0.6, 0.6)
+[node name="Control3" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+z_index = 10
+layout_mode = 2
 icon = ExtResource("5_hudwg")
 flat = true
 
-[node name="Button2" type="Button" parent="."]
+[node name="Control3" type="Control" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 z_index = 10
-offset_left = 495.86194
-offset_top = 320.3017
-offset_right = 679.86194
-offset_bottom = 387.3017
-scale = Vector2(0.6, 0.6)
+layout_mode = 2
 icon = ExtResource("6_klg7u")
 flat = true

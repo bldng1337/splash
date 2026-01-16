@@ -1,6 +1,11 @@
 @tool
 extends Node2D
 
+const drops=[
+	preload("res://assets/W2L2/drop1.wav"),
+	preload("res://assets/W2L2/drop2.wav")
+]
+
 @export var shape: Shape2D:
 	set(new_value):
 		if shape == new_value:
@@ -39,6 +44,15 @@ func process_movement(delta:float):
 	avg_velocity /= velocities.size()
 	return avg_velocity
 
+func play_drop_sound():
+	var audio_player = AudioStreamPlayer.new()
+	audio_player.stream = drops.pick_random()
+	audio_player.pitch_scale = randf_range(0.9, 1.1)
+	audio_player.volume_db = -7.0
+	add_child(audio_player)
+	audio_player.play()
+	audio_player.finished.connect(audio_player.queue_free)
+
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -48,11 +62,11 @@ func _process(delta: float) -> void:
 	for node:Node2D in collection.get_children():
 		if shape.collide(global_transform,node_shape,node.global_transform):
 			node.queue_free()
+			play_drop_sound()
 			if node.is_shit:
 				manager.fail()
 				return
 			manager.finish_objective()
-			node.queue_free()
 
 func _draw() -> void:
 	if Engine.is_editor_hint() and shape != null:

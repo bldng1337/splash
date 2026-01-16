@@ -1,5 +1,7 @@
 extends Node2D
 
+const clink_sound=preload("res://assets/W1L2/clink.wav")
+
 const dirty_textures= [
 	preload("res://assets/W1L2/glass1_dirty.png"),
 	preload("res://assets/W1L2/glass2_dirty.png"),
@@ -15,7 +17,7 @@ const clean_textures= [
 ]
 
 @export var click_label: Label
-const hider_texture: Texture2D = preload("res://assets/temp.png")
+const hider_texture: Texture2D = preload("res://assets/W1L2/cup.png")
 
 var num_glasses:int=5
 var glasses:Array= []
@@ -38,9 +40,7 @@ class Glass:
 			node.texture = dirty_textures[randi() % dirty_textures.size()]
 		hider = Sprite2D.new()
 		hider.texture = hider_texture
-		hider.modulate = Color(0, 0, 0)
 		hider.position = Vector2(0, -glass_height)
-		hider.scale = Vector2(2, 6)
 		node.add_child(hider)
 		want_pos = node.position
 
@@ -121,6 +121,12 @@ func swap():
 		var temp=glasses[a].want_pos
 		glasses[a].want_pos=glasses[b].want_pos
 		glasses[b].want_pos=temp
+
+		var player = AudioStreamPlayer.new()
+		player.stream = clink_sound
+		add_child(player)
+		player.play()
+		player.finished.connect(player.queue_free)
 	is_ready=true
 	click_label.text="Click the CLEAN glasses!"
 	click_label.show()

@@ -1,5 +1,8 @@
 extends Node2D
 
+var squeak= preload("res://assets/W1L1/squeak.mp3")
+var water= preload("res://assets/W1L1/water.wav")
+
 var pipe_straight = preload("res://assets/W1L1/pipe_straight.png")
 var pipe_corner = preload("res://assets/W1L1/pipe_corner.png")
 var pipe_triple = preload("res://assets/W1L1/pipe_triple.png")
@@ -233,6 +236,16 @@ func rotate_pipe(index: int) -> void:
 func _process(delta: float) -> void:
 	for i in range(pipe_sprites.size()):
 		var pipe = pipe_sprites[i]
+		if shaking:
+			var shake_amount = 4.0
+			var shake_offset = Vector2(
+				(randf() - 0.5) * shake_amount,
+				(randf() - 0.5) * shake_amount
+			)
+			pipe.position = Vector2(pipes[i].x * cell_size, pipes[i].y * cell_size) + grid_offset + shake_offset
+		else:
+			pipe.position = Vector2(pipes[i].x * cell_size, pipes[i].y * cell_size) + grid_offset
+
 
 		# # Update color based on correctness
 		# if pipe_rotations[i] in correct_pipe_rotations[i]:
@@ -262,9 +275,22 @@ func check_win_condition() -> void:
 			return
 	on_puzzle_complete()
 
+var shaking=false
+
 func on_puzzle_complete() -> void:
 	if game_complete:
 		return
 	game_complete = true
+	shaking=true
+	var audio = AudioStreamPlayer.new()
+	audio.stream = squeak
+	add_child(audio)
+	audio.play()
 	await get_tree().create_timer(0.5).timeout
+	audio.stop()
+	shaking=false
+	audio.stream = water
+	audio.play()
+	await get_tree().create_timer(1).timeout
+	audio.stop()
 	manager.finish_objective()
