@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4xsfpwbl6tfg"]
+[gd_scene load_steps=8 format=3 uid="uid://c4xsfpwbl6tfg"]
 
 [ext_resource type="Script" uid="uid://enrije6na2kk" path="res://general/screens/tween/screen.gd" id="1_g82o2"]
 [ext_resource type="VideoStream" uid="uid://7cglb6lhwdcp" path="res://assets/win_tween/middle.ogv" id="1_sknpr"]
 [ext_resource type="Shader" uid="uid://b1r3y565ccb3i" path="res://general/screens/tween/transparent.gdshader" id="2_ey30w"]
 [ext_resource type="FontFile" uid="uid://c3u6a3fnigfgr" path="res://assets/Poppins-Bold.ttf" id="2_g82o2"]
+[ext_resource type="Texture2D" uid="uid://bolpvohnlqxdh" path="res://assets/water drop.png" id="5_4dovd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4dovd"]
 shader = ExtResource("2_ey30w")
@@ -20,13 +21,16 @@ stacked_outline_0/size = 1
 stacked_outline_1/size = 1
 stacked_outline_2/size = 1
 
-[node name="TweenLoose" type="Node2D" node_paths=PackedStringArray("first", "second", "third", "label")]
+[node name="TweenLoose" type="Node2D" node_paths=PackedStringArray("first", "second", "third", "first_life", "second_life", "third_life", "label")]
 z_index = 4096
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_g82o2")
 first = NodePath("VideoStreamPlayer")
 second = NodePath("VideoStreamPlayer2")
 third = NodePath("VideoStreamPlayer3")
+first_life = NodePath("CenterContainer/HBoxContainer/TextureRect")
+second_life = NodePath("CenterContainer/HBoxContainer/TextureRect2")
+third_life = NodePath("CenterContainer/HBoxContainer/TextureRect3")
 label = NodePath("time_label")
 
 [node name="VideoStreamPlayer3" type="VideoStreamPlayer" parent="."]
@@ -54,6 +58,7 @@ autoplay = true
 
 [node name="time_label" type="Label" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.96862745)
 z_index = 10
 texture_filter = 4
 offset_left = 3.557251
@@ -64,3 +69,39 @@ text = "1/15"
 label_settings = SubResource("LabelSettings_ka8hw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+modulate = Color(1, 1, 1, 0.91764706)
+offset_top = 369.71286
+offset_right = 19157.37
+offset_bottom = 1712.4558
+scale = Vector2(0.1, 0.1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_4dovd")
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_4dovd")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_4dovd")
+stretch_mode = 5

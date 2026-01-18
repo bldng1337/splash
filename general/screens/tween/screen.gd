@@ -16,6 +16,10 @@ const LOOSE_VIDEO=[
 @export var second:VideoStreamPlayer
 @export var third:VideoStreamPlayer
 
+@export var first_life:Control
+@export var second_life:Control
+@export var third_life:Control
+
 @export var is_loose:bool
 @export var label:Label
 
@@ -48,15 +52,23 @@ func _ready() -> void:
 
 
 func _on_first_stopped():
-	label.visible=true
 	second.play()
 	second.visible=true
 	second.paused=false
 	first.visible=false
-	await get_tree().create_timer(1).timeout
+	label.visible=true
+	await get_tree().create_timer(0.1).timeout
+	var life=manager.lives
+	first_life.visible=life>0
+	second_life.visible=life>1
+	third_life.visible=life>2
+	await get_tree().create_timer(0.9).timeout
 	label.visible=true
 	await get_tree().create_timer(1.6).timeout
 	label.visible=false
+	first_life.visible=false
+	second_life.visible=false
+	third_life.visible=false
 	manager.next_game()
 
 
